@@ -1,0 +1,20 @@
+PROJECT STRUCTURE & FILE GUIDE:
+
+1. File Konfigurasi & Setup Utama (Root Directory)
+- pubspec.yaml: File konfigurasi utama proyek Flutter yang berisi daftar dependensi/package pihak ketiga (seperti shared_preferences dan hive_flutter), konfigurasi asset, font, serta versi SDK Dart.
+- analysis_options.yaml: Mengatur aturan linter dan analisis statis kode agar penulisan kode sesuai dengan standar kualitas Flutter/Dart.
+
+2. Titik Masuk & Menu Utama (lib/)
+- lib/main.dart: Titik masuk utama (entry point) aplikasi. Berisi fungsi main() tempat inisialisasi awal seperti WidgetsFlutterBinding.ensureInitialized(), inisialisasi Hive, serta menjalankan root widget (MyApp).
+- lib/pages/main_app.dart: Halaman menu utama (MainApp). Menampilkan antarmuka navigasi awal yang memberikan pilihan tombol untuk membuka aplikasi catatan (Notes App) atau aplikasi kontak (Contact App).
+
+3. Modul Notes App (lib/pages/notes_app/)
+- lib/pages/notes_app/notes_home.dart: Halaman utama untuk pencatatan (Notes). Mengimplementasikan penyimpanan lokal SharedPreferences (getStringList & setStringList) untuk melakukan operasi CRUD (Create, Read, Update, Delete) catatan secara persisten.
+
+4. Modul Contact App & Model (lib/pages/contact_app/ & lib/data/)
+- lib/pages/contact_app/contact_home.dart: Halaman utama manajemen kontak. Berinteraksi langsung dengan Hive Box (contacts_box) untuk melakukan operasi CRUD data kontak (nama dan nomor telepon) secara lokal dan reaktif.
+- lib/data/contact.dart: Model data (Blueprint / class) untuk objek Contact yang merepresentasikan struktur data kontak (memiliki properti name dan telephone).
+
+5. Pengujian & Konfigurasi Platform
+- test/widget_test.dart: File pengujian otomatis (widget test) bawaan Flutter untuk menguji komponen UI atau fasa widget.
+- Folder Platform (android/, ios/, windows/, macos/, web/, linux/): Berisi file konfigurasi spesifik platform agar aplikasi Flutter dapat dikompilasi dan dijalankan di berbagai sistem operasi.

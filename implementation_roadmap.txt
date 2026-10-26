@@ -1,0 +1,33 @@
+IMPLEMENTATION ROADMAP & DEVELOPMENT PHASES:
+
+Tahap 1: Persiapan & Konfigurasi Dependensi
+- Menambahkan package `shared_preferences` dan `hive_flutter` ke dalam file `pubspec.yaml`.
+- Menjalankan perintah `flutter pub get` untuk menginstal seluruh dependensi yang dibutuhkan proyek.
+
+Script Perintah Instalasi Dependensi Lengkap:
+```bash
+# Menambahkan package SharedPreferences untuk Notes App
+flutter pub add shared_preferences
+
+# Menambahkan package Hive dan Hive Flutter untuk Contact App
+flutter pub add hive
+flutter pub add hive_flutter
+
+# Mengunduh dan memperbarui semua dependensi proyek
+flutter pub get
+```
+
+Tahap 2: Inisialisasi Database Lokal
+- Menyiapkan inisialisasi asynchronous di dalam fungsi `main()` pada file `lib/main.dart`.
+- Menjalankan `Hive.initFlutter()` dan membuka Hive Box (`contacts_box`) sebelum aplikasi dirender.
+
+Tahap 3: Implementasi Notes App (SharedPreferences)
+- Membangun logika penyimpanan lokal berbasis Key-Value untuk catatan di `lib/pages/notes_app/notes_home.dart`.
+- Mengimplementasikan fungsi pemuatan (`_loadNotes`), penyimpanan (`_saveNotes`), serta operasi CRUD (Tambah, Update, Hapus).
+
+Tahap 4: Implementasi Contact App (Hive)
+- Membangun sistem penyimpanan data terstruktur NoSQL Box di `lib/pages/contact_app/contact_home.dart`.
+- Menghubungkan form input nama dan nomor telepon dengan Hive Box untuk operasi CRUD reaktif (`add`, `putAt`, `deleteAt`).
+
+Tahap 5: Verifikasi & Pengujian Akhir
+- Memeriksa kelayakan kode, integritas penyimpanan data, serta memastikan aplikasi dapat dikompilasi dan berjalan dengan mulus di perangkat/emulator.
